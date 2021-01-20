@@ -49,14 +49,18 @@ create table antiepileptic_drug_patients
 
 create table EEG
 (
+    id        INTEGER
+    primary key,
+    id_patients INTEGER
+    references patients
     date        NUMERIC,
     result      TEXT,
-    id_patients INTEGER
-        references patients
 );
 
 create table results_of_instrumental_research
-(
+(   
+    id        INTEGER
+    primary key,
     id_patients      INTEGER
         references patients,
     date             NUMERIC,
