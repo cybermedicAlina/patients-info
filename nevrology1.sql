@@ -32,12 +32,14 @@ create table patients
 create table antiepileptic_drug
 (
     id        INTEGER
-        primary key,
+        primary key autoincrement,
     drug_name TEXT
 );
 
 create table antiepileptic_drug_patients
-(
+(   
+    id        INTEGER
+    primary key autoincrement,
     id_patients      INTEGER
         references patients,
     id_drug          INTEGER
@@ -50,7 +52,7 @@ create table antiepileptic_drug_patients
 create table EEG
 (
     id        INTEGER
-    primary key,
+    primary key autoincrement,
     id_patients INTEGER
     references patients
     date        NUMERIC,
@@ -60,7 +62,7 @@ create table EEG
 create table results_of_instrumental_research
 (   
     id        INTEGER
-    primary key,
+    primary key autoincrement,
     id_patients      INTEGER
         references patients,
     date             NUMERIC,
