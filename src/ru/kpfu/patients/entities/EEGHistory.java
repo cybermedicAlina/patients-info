@@ -4,11 +4,13 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
+@Table(name = "EEG")
 public class EEGHistory {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
+    @Column(name = "id_patients")
     private Patient patient;
     private Date date;
     private String description;
@@ -44,4 +46,5 @@ public class EEGHistory {
     public void setDescription(String description) {
         this.description = description;
     }
+
 }

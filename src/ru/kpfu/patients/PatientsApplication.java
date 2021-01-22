@@ -2,6 +2,7 @@ package ru.kpfu.patients;
 
 import javafx.application.Application;
 import javafx.scene.Scene;
+import javafx.scene.control.Label;
 import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
@@ -16,8 +17,9 @@ public class PatientsApplication extends Application {
 
     @Override
     public void start(Stage stage) {
-        setUpHibernate();
-        Scene scene = new Scene(new StackPane(), 640, 480);
+        SessionFactory f = setUpHibernate();
+        Label l = new Label("Session Factory is " + (f == null));
+        Scene scene = new Scene(new StackPane(l), 640, 480);
         stage.setScene(scene);
         stage.show();
     }

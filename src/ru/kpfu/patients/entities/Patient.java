@@ -10,53 +10,55 @@ public class Patient {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-    private String fistName;
-    private String lastName;
-    private Integer age;
+    private String name;
+    @Enumerated(EnumType.STRING)
+    private Gender gender;
     @ManyToOne
     private Diagnosis diagnosis;
+    @Column(name = "type_of_epileptic_seizure")
+    private String typeOfEpilepticSeizure;
+    @Column(name = "age_of_onset")
+    private String ageOfOnset;
     private String address;
-    private Date birthDate;
-    private Float birthWight;
-    private Float width;
+    @Column(name = "date_of_examination")
+    private Date dateOfExamination;
+    private Integer age;
+    @Column(name = "date_of_birth")
+    private Date dateOfBirth;
     private String pathogenMutation;
     private String complaints;
-    private String treatment;
-    private String analyzes;
-    private String medicalHistory;
+    @Column(name = "test_results")
+    private String testResults;
+    @Column(name = "case_history")
+    private String caseHistory;
+    @Column(name = "perinatal_history")
     private String perinatalHistory;
+    @Column(name = "childbirth")
     private String birthInfo;
-    private String apgar;
-    private String evolutionFormula;
-    @OneToMany
-    private List<EEGHistory> eegHistories;
-    private Float speech;
-    private Boolean inheritance;
-    private String inheritanceComment;
-    @OneToMany
-    private List<DiagnosticsHistory> diagnosticsHistories;
+    @Column(name = "birth_weight")
+    private Float birthWeight;
+    private String APGAR;
+    @Column(name = "development_formula")
+    private String developmentFormula;
+    private String speech;
+    private String heredity;
+    @Column(name = "in_neurological_status")
     private String neurologicalStatus;
+    @Column(name = "body_mass")
+    private Float bodyMass;
+    @Column(name = "doctors_conclusion")
     private String conclusion;
     private String recommendations;
+    private String analyzes;
+    @OneToMany
+    private List<EEGHistory> eegHistories;
+    @OneToMany
+    private List<ResultsOfInstrumentalResearch> diagnosticsHistories;
+    @OneToMany
+    private List<AntiepilepticDrugPatients> antiepilepticDrugPatients;
 
     public Patient() {
 
-    }
-
-    public String getFistName() {
-        return fistName;
-    }
-
-    public void setFistName(String fistName) {
-        this.fistName = fistName;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public Integer getAge() {
@@ -83,20 +85,211 @@ public class Patient {
         this.id = id;
     }
 
-    public Patient(String fistName, String lastName, int age, Diagnosis diagnosis) {
-        this(null, fistName, lastName, age, diagnosis);
+    public String getName() {
+        return name;
     }
 
-    public Patient(Integer id, String fistName, String lastName, int age, Diagnosis diagnosis) {
-        this.id = id;
-        this.fistName = fistName;
-        this.lastName = lastName;
-        this.age = age;
-        this.diagnosis = diagnosis;
+    public void setName(String name) {
+        this.name = name;
     }
 
-    @Override
-    public String toString() {
-        return "Patient(" + this.getFistName() + ", " + this.getLastName() + ")";
+    public Gender getGender() {
+        return gender;
+    }
+
+    public void setGender(Gender gender) {
+        this.gender = gender;
+    }
+
+    public String getTypeOfEpilepticSeizure() {
+        return typeOfEpilepticSeizure;
+    }
+
+    public void setTypeOfEpilepticSeizure(String typeOfEpilepticSeizure) {
+        this.typeOfEpilepticSeizure = typeOfEpilepticSeizure;
+    }
+
+    public String getAgeOfOnset() {
+        return ageOfOnset;
+    }
+
+    public void setAgeOfOnset(String ageOfOnset) {
+        this.ageOfOnset = ageOfOnset;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
+    public Date getDateOfExamination() {
+        return dateOfExamination;
+    }
+
+    public void setDateOfExamination(Date dateOfExamination) {
+        this.dateOfExamination = dateOfExamination;
+    }
+
+    public Date getDateOfBirth() {
+        return dateOfBirth;
+    }
+
+    public void setDateOfBirth(Date dateOfBirth) {
+        this.dateOfBirth = dateOfBirth;
+    }
+
+    public String getPathogenMutation() {
+        return pathogenMutation;
+    }
+
+    public void setPathogenMutation(String pathogenMutation) {
+        this.pathogenMutation = pathogenMutation;
+    }
+
+    public String getComplaints() {
+        return complaints;
+    }
+
+    public void setComplaints(String complaints) {
+        this.complaints = complaints;
+    }
+
+    public String getTestResults() {
+        return testResults;
+    }
+
+    public void setTestResults(String testResults) {
+        this.testResults = testResults;
+    }
+
+    public String getCaseHistory() {
+        return caseHistory;
+    }
+
+    public void setCaseHistory(String caseHistory) {
+        this.caseHistory = caseHistory;
+    }
+
+    public String getPerinatalHistory() {
+        return perinatalHistory;
+    }
+
+    public void setPerinatalHistory(String perinatalHistory) {
+        this.perinatalHistory = perinatalHistory;
+    }
+
+    public String getBirthInfo() {
+        return birthInfo;
+    }
+
+    public void setBirthInfo(String birthInfo) {
+        this.birthInfo = birthInfo;
+    }
+
+    public Float getBirthWeight() {
+        return birthWeight;
+    }
+
+    public void setBirthWeight(Float birthWeight) {
+        this.birthWeight = birthWeight;
+    }
+
+    public String getAPGAR() {
+        return APGAR;
+    }
+
+    public void setAPGAR(String APGAR) {
+        this.APGAR = APGAR;
+    }
+
+    public String getDevelopmentFormula() {
+        return developmentFormula;
+    }
+
+    public void setDevelopmentFormula(String developmentFormula) {
+        this.developmentFormula = developmentFormula;
+    }
+
+    public String getSpeech() {
+        return speech;
+    }
+
+    public void setSpeech(String speech) {
+        this.speech = speech;
+    }
+
+    public String getHeredity() {
+        return heredity;
+    }
+
+    public void setHeredity(String heredity) {
+        this.heredity = heredity;
+    }
+
+    public String getNeurologicalStatus() {
+        return neurologicalStatus;
+    }
+
+    public void setNeurologicalStatus(String neurologicalStatus) {
+        this.neurologicalStatus = neurologicalStatus;
+    }
+
+    public Float getBodyMass() {
+        return bodyMass;
+    }
+
+    public void setBodyMass(Float bodyMass) {
+        this.bodyMass = bodyMass;
+    }
+
+    public String getConclusion() {
+        return conclusion;
+    }
+
+    public void setConclusion(String conclusion) {
+        this.conclusion = conclusion;
+    }
+
+    public String getRecommendations() {
+        return recommendations;
+    }
+
+    public void setRecommendations(String recommendations) {
+        this.recommendations = recommendations;
+    }
+
+    public String getAnalyzes() {
+        return analyzes;
+    }
+
+    public void setAnalyzes(String analyzes) {
+        this.analyzes = analyzes;
+    }
+
+    public List<EEGHistory> getEegHistories() {
+        return eegHistories;
+    }
+
+    public void setEegHistories(List<EEGHistory> eegHistories) {
+        this.eegHistories = eegHistories;
+    }
+
+    public List<ResultsOfInstrumentalResearch> getDiagnosticsHistories() {
+        return diagnosticsHistories;
+    }
+
+    public void setDiagnosticsHistories(List<ResultsOfInstrumentalResearch> diagnosticsHistories) {
+        this.diagnosticsHistories = diagnosticsHistories;
+    }
+
+    public List<AntiepilepticDrugPatients> getAntiepilepticDrugPatients() {
+        return antiepilepticDrugPatients;
+    }
+
+    public void setAntiepilepticDrugPatients(List<AntiepilepticDrugPatients> antiepilepticDrugPatients) {
+        this.antiepilepticDrugPatients = antiepilepticDrugPatients;
     }
 }

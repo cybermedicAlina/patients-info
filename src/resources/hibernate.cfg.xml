@@ -6,7 +6,11 @@
         <property name="connection.driver_class">org.sqlite.JDBC</property>
         <property name="connection.url">jdbc:sqlite:nevrology.sqlite</property>
         <property name="hibernate.hbm2ddl.auto">validate</property>
+        <property name="connection.autocommit">true</property>
 
         <mapping class="ru.kpfu.patients.entities.Diagnosis"/>
+        <mapping class="ru.kpfu.patients.entities.EEGHistory"/>
+        <mapping class="ru.kpfu.patients.entities.ResultsOfInstrumentalResearch"/>
+        <mapping class="ru.kpfu.patients.entities.Patient"/>
     </session-factory>
 </hibernate-configuration>

@@ -5,13 +5,14 @@ import java.util.Date;
 
 @Entity
 @Table(name = "results_of_instrumental_research")
-public class DiagnosticsHistory {
+public class ResultsOfInstrumentalResearch {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private Date date;
-    private String description;
+    private String result;
     @ManyToOne
+    @Column(name = "id_patients")
     private Patient patient;
 
     public Integer getId() {
@@ -30,12 +31,12 @@ public class DiagnosticsHistory {
         this.date = date;
     }
 
-    public String getDescription() {
-        return description;
+    public String getResult() {
+        return result;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setResult(String description) {
+        this.result = description;
     }
 
     public Patient getPatient() {
