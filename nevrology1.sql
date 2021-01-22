@@ -54,9 +54,9 @@ create table EEG
     id        INTEGER
     primary key autoincrement,
     id_patients INTEGER
-    references patients
+    references patients,
     date        NUMERIC,
-    result      TEXT,
+    result      TEXT
 );
 
 create table results_of_instrumental_research
