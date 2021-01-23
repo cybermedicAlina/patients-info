@@ -53,9 +53,9 @@ public class Patient {
     @OneToMany
     private List<EEGHistory> eegHistories;
     @OneToMany
-    private List<ResultsOfInstrumentalResearch> diagnosticsHistories;
+    private List<ResearchResult> diagnosticsHistories;
     @OneToMany
-    private List<AntiepilepticDrugPatients> antiepilepticDrugPatients;
+    private List<DrugPatients> drugPatients;
 
     public Patient() {
 
@@ -277,19 +277,19 @@ public class Patient {
         this.eegHistories = eegHistories;
     }
 
-    public List<ResultsOfInstrumentalResearch> getDiagnosticsHistories() {
+    public List<ResearchResult> getDiagnosticsHistories() {
         return diagnosticsHistories;
     }
 
-    public void setDiagnosticsHistories(List<ResultsOfInstrumentalResearch> diagnosticsHistories) {
+    public void setDiagnosticsHistories(List<ResearchResult> diagnosticsHistories) {
         this.diagnosticsHistories = diagnosticsHistories;
     }
 
-    public List<AntiepilepticDrugPatients> getAntiepilepticDrugPatients() {
-        return antiepilepticDrugPatients;
+    public List<DrugPatients> getAntiepilepticDrugPatients() {
+        return drugPatients;
     }
 
-    public void setAntiepilepticDrugPatients(List<AntiepilepticDrugPatients> antiepilepticDrugPatients) {
-        this.antiepilepticDrugPatients = antiepilepticDrugPatients;
+    public void setAntiepilepticDrugPatients(List<DrugPatients> drugPatients) {
+        this.drugPatients = drugPatients;
     }
 }

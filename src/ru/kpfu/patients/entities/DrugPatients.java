@@ -4,7 +4,7 @@ import javax.persistence.*;
 
 @Entity
 @Table(name = "antiepileptic_drug_patients")
-public class AntiepilepticDrugPatients {
+public class DrugPatients {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -18,7 +18,7 @@ public class AntiepilepticDrugPatients {
     private Patient patient;
     @ManyToOne
     @Column(name = "id_drug")
-    private AntiepilepticDrug antiepilepticDrug;
+    private Drug drug;
 
     public Integer getId() {
         return id;
@@ -60,11 +60,11 @@ public class AntiepilepticDrugPatients {
         this.patient = patient;
     }
 
-    public AntiepilepticDrug getAntiepilepticDrug() {
-        return antiepilepticDrug;
+    public Drug getAntiepilepticDrug() {
+        return drug;
     }
 
-    public void setAntiepilepticDrug(AntiepilepticDrug antiepilepticDrug) {
-        this.antiepilepticDrug = antiepilepticDrug;
+    public void setAntiepilepticDrug(Drug drug) {
+        this.drug = drug;
     }
 }

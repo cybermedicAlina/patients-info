@@ -10,7 +10,9 @@
 
         <mapping class="ru.kpfu.patients.entities.Diagnosis"/>
         <mapping class="ru.kpfu.patients.entities.EEGHistory"/>
-        <mapping class="ru.kpfu.patients.entities.ResultsOfInstrumentalResearch"/>
+        <mapping class="ru.kpfu.patients.entities.ResearchResult"/>
         <mapping class="ru.kpfu.patients.entities.Patient"/>
+        <mapping class="ru.kpfu.patients.entities.Drug"/>
+        <mapping class="ru.kpfu.patients.entities.DrugPatients"/>
     </session-factory>
 </hibernate-configuration>

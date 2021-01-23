@@ -5,14 +5,14 @@ import java.util.List;
 
 @Entity
 @Table(name = "antiepileptic_drug")
-public class AntiepilepticDrug {
+public class Drug {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(name = "drug_name")
     private String name;
     @OneToMany
-    private List<AntiepilepticDrugPatients> antiepilepticDrugPatients;
+    private List<DrugPatients> drugPatients;
 
     public Integer getId() {
         return id;
@@ -30,11 +30,11 @@ public class AntiepilepticDrug {
         this.name = name;
     }
 
-    public List<AntiepilepticDrugPatients> getAntiepilepticDrugPatients() {
-        return antiepilepticDrugPatients;
+    public List<DrugPatients> getAntiepilepticDrugPatients() {
+        return drugPatients;
     }
 
-    public void setAntiepilepticDrugPatients(List<AntiepilepticDrugPatients> antiepilepticDrugPatients) {
-        this.antiepilepticDrugPatients = antiepilepticDrugPatients;
+    public void setAntiepilepticDrugPatients(List<DrugPatients> drugPatients) {
+        this.drugPatients = drugPatients;
     }
 }
