@@ -10,7 +10,6 @@ import javafx.stage.Stage;
 import ru.kpfu.patients.view.models.Person;
 
 public class PersonEditDialogController {
-
     @FXML
     private TextField firstNameField;
     @FXML
@@ -69,6 +68,7 @@ public class PersonEditDialogController {
 
     public void setDialogStage(Stage dialogStage) {
         this.dialogStage = dialogStage;
+        this.dialogStage.setY(0);
         this.dialogStage.getIcons().add(new Image("file:src/resources/images/edit.png"));
     }
 

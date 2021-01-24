@@ -12,107 +12,140 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane prefHeight="900.0" prefWidth="600.0" styleClass="background" stylesheets="@DarkTheme.css" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="ru.kpfu.patients.view.controllers.PersonEditDialogController">
-   <children>
-      <GridPane layoutX="8.0" layoutY="28.0" prefHeight="814.0" prefWidth="582.0" AnchorPane.leftAnchor="15.0" AnchorPane.rightAnchor="15.0" AnchorPane.topAnchor="10.0">
-        <columnConstraints>
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="111.0" />
-          <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.0" minWidth="10.0" prefWidth="261.0" />
-        </columnConstraints>
-        <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-        </rowConstraints>
-         <children>
-            <Label text="ФИО" GridPane.rowIndex="1" />
-            <Label text="Пол" GridPane.rowIndex="2" />
-            <Label text="Адрес" GridPane.rowIndex="4" />
-            <Label text="Рост" GridPane.rowIndex="5" />
-            <Label text="Дата рождения" GridPane.rowIndex="3" />
-            <TextField fx:id="firstNameField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="1" />
-            <TextField fx:id="genderField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="2" />
-            <TextField fx:id="streetField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="4" />
-            <TextField fx:id="growthField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="5" />
-            <DatePicker fx:id="birthdayDatePicker" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="3" />
-            <Label text="Масса тела" GridPane.rowIndex="6" />
-            <TextField fx:id="weightField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="6" />
-            <Label text="Диагноз" GridPane.rowIndex="8" />
-            <Label text="Жалобы" GridPane.rowIndex="9" />
-            <Label text="Текущее лечение" GridPane.rowIndex="10" />
-            <Label text="Патогенная мутация" GridPane.rowIndex="11" />
-            <Label text="История заболевания" GridPane.rowIndex="12" />
-            <Label text="Перинатальный анамнез" GridPane.rowIndex="13" />
-            <Label text="Роды" GridPane.rowIndex="14" />
-            <Label text="Масса тела при рождении" GridPane.rowIndex="15" />
-            <Label text="АПГАР" GridPane.rowIndex="16" />
-            <Label text="Формула развития" GridPane.rowIndex="17" />
-            <Label text="Наследственность" GridPane.rowIndex="19" />
-            <Label text="Речь" GridPane.rowIndex="18" />
-            <Label text="Лабораторная диагностика" GridPane.rowIndex="23" />
-            <Label text="Неврологический статус" GridPane.rowIndex="20" />
-            <Label text="Заключение" GridPane.rowIndex="21" />
-            <Label text="Рекомендации" GridPane.rowIndex="22" />
-            <Label contentDisplay="CENTER" prefHeight="21.0" prefWidth="115.0" style="-fx-alignment: center;" styleClass="sectionTitle" stylesheets="@DarkTheme.css" text="Анамнез" textAlignment="CENTER" GridPane.rowIndex="7">
-               <font>
-                  <Font name="Trebuchet MS Bold" size="14.0" />
-               </font>
-               <padding>
-                  <Insets top="5.0" />
-               </padding>
-            </Label>
-            <Label prefHeight="33.0" prefWidth="155.0" style="-fx-alignment: center;" styleClass="sectionTitle" stylesheets="@DarkTheme.css" text="Личные данные">
-               <padding>
-                  <Insets bottom="5.0" />
-               </padding>
-            </Label>
-            <TextField fx:id="diagnosisField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-            <TextField fx:id="complaintsField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-            <TextField fx:id="treatmentField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="10" />
-            <TextField fx:id="mutationsField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="11" />
-            <TextField fx:id="medHistoryField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="12" />
-            <TextField fx:id="perinatalHistoryField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="13" />
-            <TextField fx:id="birthField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="14" />
-            <TextField fx:id="birthWeightField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="15" />
-            <TextField fx:id="apgarField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="16" />
-            <TextField fx:id="developmentField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="17" />
-            <TextField fx:id="heredityField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="19" />
-            <TextField fx:id="speechField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="18" />
-            <TextField fx:id="labDiagnosticsField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="23" />
-            <TextField fx:id="neurostatusField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="20" />
-            <TextField fx:id="conclusionField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="21" />
-            <TextField fx:id="recommendationsField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="22" />
-            <Label text="Инструментальная диагностика" GridPane.rowIndex="24" />
-            <TextField fx:id="instrumentalField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1" GridPane.rowIndex="24" />
-         </children>
-      </GridPane>
-      <ButtonBar layoutX="176.0" layoutY="233.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
-        <buttons>
-            <Button defaultButton="true" mnemonicParsing="false" onAction="#handleOk" text="Сохранить" />
-          <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="120.0" text="Отменить" />
-        </buttons>
-      </ButtonBar>
-   </children>
+<?import javafx.scene.control.ScrollPane?>
+<AnchorPane prefHeight="600.0" prefWidth="600.0" styleClass="background" stylesheets="@DarkTheme.css"
+            xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1"
+            fx:controller="ru.kpfu.patients.view.controllers.PersonEditDialogController">
+    <ScrollPane AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0"
+                AnchorPane.bottomAnchor="0.0">
+        <AnchorPane prefHeight="900.0" prefWidth="600.0">
+            <GridPane minHeight="814.0" prefWidth="582.0" AnchorPane.leftAnchor="21.0" AnchorPane.rightAnchor="5.0"
+                      AnchorPane.topAnchor="0.0">
+                <columnConstraints>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="218.0" minWidth="10.0" prefWidth="111.0"/>
+                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="316.0" minWidth="10.0" prefWidth="261.0"/>
+                </columnConstraints>
+                <rowConstraints>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES"/>
+                </rowConstraints>
+                <children>
+                    <Label text="ФИО" GridPane.rowIndex="1"/>
+                    <Label text="Пол" GridPane.rowIndex="2"/>
+                    <Label text="Адрес" GridPane.rowIndex="4"/>
+                    <Label text="Рост" GridPane.rowIndex="5"/>
+                    <Label text="Дата рождения" GridPane.rowIndex="3"/>
+                    <TextField fx:id="firstNameField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="1"/>
+                    <TextField fx:id="genderField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="2"/>
+                    <TextField fx:id="streetField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="4"/>
+                    <TextField fx:id="growthField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="5"/>
+                    <DatePicker fx:id="birthdayDatePicker" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                                GridPane.rowIndex="3"/>
+                    <Label text="Масса тела" GridPane.rowIndex="6"/>
+                    <TextField fx:id="weightField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="6"/>
+                    <Label text="Диагноз" GridPane.rowIndex="8"/>
+                    <Label text="Жалобы" GridPane.rowIndex="9"/>
+                    <Label text="Текущее лечение" GridPane.rowIndex="10"/>
+                    <Label text="Патогенная мутация" GridPane.rowIndex="11"/>
+                    <Label text="История заболевания" GridPane.rowIndex="12"/>
+                    <Label text="Перинатальный анамнез" GridPane.rowIndex="13"/>
+                    <Label text="Роды" GridPane.rowIndex="14"/>
+                    <Label text="Масса тела при рождении" GridPane.rowIndex="15"/>
+                    <Label text="АПГАР" GridPane.rowIndex="16"/>
+                    <Label text="Формула развития" GridPane.rowIndex="17"/>
+                    <Label text="Наследственность" GridPane.rowIndex="19"/>
+                    <Label text="Речь" GridPane.rowIndex="18"/>
+                    <Label text="Лабораторная диагностика" GridPane.rowIndex="23"/>
+                    <Label text="Неврологический статус" GridPane.rowIndex="20"/>
+                    <Label text="Заключение" GridPane.rowIndex="21"/>
+                    <Label text="Рекомендации" GridPane.rowIndex="22"/>
+                    <Label contentDisplay="CENTER" prefHeight="21.0" prefWidth="115.0" style="-fx-alignment: center;"
+                           styleClass="sectionTitle" stylesheets="@DarkTheme.css" text="Анамнез" textAlignment="CENTER"
+                           GridPane.rowIndex="7">
+                        <font>
+                            <Font name="Trebuchet MS Bold" size="14.0"/>
+                        </font>
+                        <padding>
+                            <Insets top="5.0"/>
+                        </padding>
+                    </Label>
+                    <Label prefHeight="33.0" prefWidth="155.0" style="-fx-alignment: center;" styleClass="sectionTitle"
+                           stylesheets="@DarkTheme.css" text="Личные данные">
+                        <padding>
+                            <Insets bottom="5.0"/>
+                        </padding>
+                    </Label>
+                    <TextField fx:id="diagnosisField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="8"/>
+                    <TextField fx:id="complaintsField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="9"/>
+                    <TextField fx:id="treatmentField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="10"/>
+                    <TextField fx:id="mutationsField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="11"/>
+                    <TextField fx:id="medHistoryField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="12"/>
+                    <TextField fx:id="perinatalHistoryField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="13"/>
+                    <TextField fx:id="birthField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="14"/>
+                    <TextField fx:id="birthWeightField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="15"/>
+                    <TextField fx:id="apgarField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="16"/>
+                    <TextField fx:id="developmentField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="17"/>
+                    <TextField fx:id="heredityField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="19"/>
+                    <TextField fx:id="speechField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="18"/>
+                    <TextField fx:id="labDiagnosticsField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="23"/>
+                    <TextField fx:id="neurostatusField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="20"/>
+                    <TextField fx:id="conclusionField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="21"/>
+                    <TextField fx:id="recommendationsField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="22"/>
+                    <Label text="Инструментальная диагностика" GridPane.rowIndex="24"/>
+                    <TextField fx:id="instrumentalField" maxHeight="30.0" minHeight="30.0" GridPane.columnIndex="1"
+                               GridPane.rowIndex="24"/>
+                </children>
+            </GridPane>
+            <ButtonBar layoutX="176.0" layoutY="233.0" AnchorPane.bottomAnchor="10.0" AnchorPane.rightAnchor="10.0">
+                <buttons>
+                    <Button defaultButton="true" mnemonicParsing="false" onAction="#handleOk" text="Сохранить"/>
+                    <Button mnemonicParsing="false" onAction="#handleCancel" prefWidth="120.0" text="Отменить"/>
+                </buttons>
+            </ButtonBar>
+        </AnchorPane>
+    </ScrollPane>
 </AnchorPane>
