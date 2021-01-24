@@ -1,7 +1,7 @@
-package ru.kpfu.patients.services;
+package ru.kpfu.patients.backend.services;
 
 import org.hibernate.SessionFactory;
-import ru.kpfu.patients.utils.HibernateConfigurer;
+import ru.kpfu.patients.backend.utils.HibernateConfigurer;
 
 public class Service {
     private SessionFactory factory;

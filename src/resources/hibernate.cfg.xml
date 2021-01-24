@@ -8,11 +8,11 @@
         <property name="hibernate.hbm2ddl.auto">validate</property>
         <property name="connection.autocommit">true</property>
 
-        <mapping class="ru.kpfu.patients.entities.Diagnosis"/>
-        <mapping class="ru.kpfu.patients.entities.EEGHistory"/>
-        <mapping class="ru.kpfu.patients.entities.ResearchResult"/>
-        <mapping class="ru.kpfu.patients.entities.Patient"/>
-        <mapping class="ru.kpfu.patients.entities.Drug"/>
-        <mapping class="ru.kpfu.patients.entities.DrugPatients"/>
+        <mapping class="ru.kpfu.patients.backend.entities.Diagnosis"/>
+        <mapping class="ru.kpfu.patients.backend.entities.EEGHistory"/>
+        <mapping class="ru.kpfu.patients.backend.entities.ResearchResult"/>
+        <mapping class="ru.kpfu.patients.backend.entities.Patient"/>
+        <mapping class="ru.kpfu.patients.backend.entities.Drug"/>
+        <mapping class="ru.kpfu.patients.backend.entities.DrugPatients"/>
     </session-factory>
 </hibernate-configuration>

@@ -1,7 +1,7 @@
-package ru.kpfu.patients.services;
+package ru.kpfu.patients.backend.services;
 
 import org.hibernate.Session;
-import ru.kpfu.patients.entities.Diagnosis;
+import ru.kpfu.patients.backend.entities.Diagnosis;
 
 import javax.persistence.criteria.CriteriaQuery;
 import java.util.Collections;

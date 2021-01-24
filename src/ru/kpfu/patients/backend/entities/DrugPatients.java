@@ -1,4 +1,4 @@
-package ru.kpfu.patients.entities;
+package ru.kpfu.patients.backend.entities;
 
 import javax.persistence.*;
 

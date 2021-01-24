@@ -1,4 +1,4 @@
-package ru.kpfu.patients.utils;
+package ru.kpfu.patients.backend.utils;
 
 import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;

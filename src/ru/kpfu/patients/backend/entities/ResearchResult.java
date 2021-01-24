@@ -1,19 +1,19 @@
-package ru.kpfu.patients.entities;
+package ru.kpfu.patients.backend.entities;
 
 import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "EEG")
-public class EEGHistory {
+@Table(name = "results_of_instrumental_research")
+public class ResearchResult {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    private Date date;
+    private String result;
     @ManyToOne
     @Column(name = "id_patients")
     private Patient patient;
-    private Date date;
-    private String description;
 
     public Integer getId() {
         return id;
@@ -21,14 +21,6 @@ public class EEGHistory {
 
     public void setId(Integer id) {
         this.id = id;
-    }
-
-    public Patient getPatient() {
-        return patient;
-    }
-
-    public void setPatient(Patient patient) {
-        this.patient = patient;
     }
 
     public Date getDate() {
@@ -39,12 +31,19 @@ public class EEGHistory {
         this.date = date;
     }
 
-    public String getDescription() {
-        return description;
+    public String getResult() {
+        return result;
     }
 
-    public void setDescription(String description) {
-        this.description = description;
+    public void setResult(String description) {
+        this.result = description;
     }
 
+    public Patient getPatient() {
+        return patient;
+    }
+
+    public void setPatient(Patient patient) {
+        this.patient = patient;
+    }
 }
