@@ -1,72 +1,79 @@
-create table patients
-(
-    id                        INTEGER
-        primary key autoincrement,
-    name                      TEXT,
-    gender                    TEXT,
-    diagnosis                 TEXT,
-    type_of_epileptic_seizure TEXT,
-    age_of_onset              TEXT,
-    address                   TEXT,
-    date_of_examination       NUMERIC,
-    age                       INTEGER,
-    date_of_birth             NUMERIC,
-    pathogenic_mutation       TEXT,
-    complaints                TEXT,
-    test_results              TEXT,
-    case_history              TEXT,
-    perinatal_history         TEXT,
-    childbirth                TEXT,
-    birth_weight              TEXT,
-    APGAR                     TEXT,
-    development_formula       TEXT,
-    speech                    TEXT,
-    heredity                  TEXT,
-    in_neurological_status    TEXT,
-    body_mass                 TEXT,
-    doctors_conclusion        TEXT,
-    recommendations           TEXT
-);
-
-
 create table antiepileptic_drug
 (
-    id        INTEGER
+    id INTEGER not null
         primary key autoincrement,
     drug_name TEXT
 );
 
-create table antiepileptic_drug_patients
-(   
-    id        INTEGER
-    primary key autoincrement,
-    id_patients      INTEGER
-        references patients,
-    id_drug          INTEGER
-        references antiepileptic_drug,
-    dose             TEXT,
-    side_effect      TEXT,
-    treatment_effect TEXT
+create table diagnosis
+(
+    id integer not null
+        primary key autoincrement,
+    name text not null
+);
+
+create table patients
+(
+    id INTEGER not null
+        primary key autoincrement,
+    name TEXT,
+    gender TEXT,
+    diagnosis TEXT,
+    type_of_epileptic_seizure TEXT,
+    age_of_onset TEXT,
+    address TEXT,
+    date_of_examination NUMERIC,
+    age INTEGER,
+    date_of_birth NUMERIC,
+    pathogenic_mutation TEXT,
+    complaints TEXT,
+    test_results TEXT,
+    case_history TEXT,
+    perinatal_history TEXT,
+    childbirth TEXT,
+    birth_weight TEXT,
+    APGAR TEXT,
+    development_formula TEXT,
+    speech TEXT,
+    heredity TEXT,
+    in_neurological_status TEXT,
+    body_mass FLOAT,
+    doctors_conclusion TEXT,
+    recommendations TEXT,
+    analyzes TEXT
 );
 
 create table EEG
 (
-    id        INTEGER
-    primary key autoincrement,
-    id_patients INTEGER
-    references patients,
-    date        NUMERIC,
-    result      TEXT
+    id INTEGER not null
+        primary key autoincrement,
+    id_patients INTEGER not null
+        references patients,
+    date NUMERIC,
+    result TEXT
+);
+
+create table antiepileptic_drug_patients
+(
+    id INTEGER not null
+        primary key autoincrement,
+    id_patients INTEGER not null
+        references patients,
+    id_drug INTEGER not null
+        references antiepileptic_drug,
+    dose TEXT,
+    side_effect TEXT,
+    treatment_effect TEXT
 );
 
 create table results_of_instrumental_research
-(   
-    id        INTEGER
-    primary key autoincrement,
-    id_patients      INTEGER
+(
+    id INTEGER not null
+        primary key autoincrement,
+    id_patients INTEGER not null
         references patients,
-    date             NUMERIC,
+    date NUMERIC,
     type_of_research TEXT,
-    result           TEXT
+    result TEXT
 );
 
