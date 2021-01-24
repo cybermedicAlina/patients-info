@@ -41,8 +41,7 @@ create table patients
     body_mass FLOAT,
     doctors_conclusion TEXT,
     recommendations TEXT,
-    analyzes TEXT,
-    pathogenMutation Text
+    analyzes TEXT
 );
 
 create table EEG

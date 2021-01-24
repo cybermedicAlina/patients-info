@@ -25,6 +25,7 @@ public class Patient {
     private Integer age;
     @Column(name = "date_of_birth", columnDefinition = "numeric")
     private LocalDate dateOfBirth;
+    @Column(name = "pathogenic_mutation")
     private String pathogenMutation;
     private String complaints;
     @Column(name = "test_results")
