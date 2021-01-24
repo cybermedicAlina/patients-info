@@ -4,11 +4,11 @@ import org.hibernate.SessionFactory;
 import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
+import ru.kpfu.patients.PatientsApplication;
 
 import java.io.File;
 
 public class HibernateConfigurer {
-    private static final String CONFIG_PATH = "src/resources/hibernate.cfg.xml";
     private static SessionFactory factory;
 
     public static SessionFactory getSessionFactory() {
@@ -21,7 +21,7 @@ public class HibernateConfigurer {
     private static SessionFactory setUp() {
         // A SessionFactory is set up once for an application!
         StandardServiceRegistry registry = new StandardServiceRegistryBuilder()
-                .configure(new File(CONFIG_PATH)) // configures settings from hibernate.cfg.xml
+                .configure(PatientsApplication.class.getResource("/hibernate.cfg.xml")) // configures settings from hibernate.cfg.xml
                 .build();
         try {
             return new MetadataSources( registry ).buildMetadata().buildSessionFactory();

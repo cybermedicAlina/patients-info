@@ -37,10 +37,15 @@ public class PatientsApplication extends Application {
     private ObservableList<Patient> personData = FXCollections.observableArrayList();
 
 
+    public void refreshPatients() {
+        List<Patient> pl = patientService.getPatientList();
+        this.personData.clear();
+        this.personData.addAll(pl);
+    }
+
     public PatientsApplication() {
         this.patientService = new PatientService();
-        List<Patient> pl = patientService.getPatientList();
-        this.personData.addAll(pl);
+        refreshPatients();
     }
 
     public ObservableList<Patient> getPersonData() {

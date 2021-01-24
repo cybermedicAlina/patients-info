@@ -173,6 +173,7 @@ public class PersonEditDialogController {
                 this.mainApp.getPatientService().updatePatient(person);
             okClicked = true;
             dialogStage.close();
+            this.mainApp.refreshPatients();
         }
     }
 
