@@ -7,7 +7,7 @@ import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.stage.FileChooser;
 import ru.kpfu.patients.PatientsApplication;
-import ru.kpfu.patients.view.models.Person;
+import ru.kpfu.patients.backend.entities.Patient;
 
 public class RootLayoutController {
 
@@ -77,11 +77,8 @@ public class RootLayoutController {
 
     @FXML
     private void handleNewPerson() {
-        Person tempPerson = new Person();
-        boolean okClicked = mainApp.showPersonEditDialog(tempPerson);
-        if (okClicked) {
-            mainApp.getPersonData().add(tempPerson);
-        }
+//        Patient tempPerson = new Patient();
+        mainApp.showPersonEditDialog(null);
     }
 
     @FXML

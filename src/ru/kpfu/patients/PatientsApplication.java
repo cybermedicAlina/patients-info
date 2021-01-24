@@ -2,6 +2,7 @@ package ru.kpfu.patients;
 
 import java.io.File;
 import java.io.IOException;
+import java.util.List;
 import java.util.prefs.Preferences;
 
 import javafx.application.Application;
@@ -18,9 +19,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
 import org.hibernate.SessionFactory;
+import ru.kpfu.patients.backend.entities.Patient;
+import ru.kpfu.patients.backend.services.PatientService;
 import ru.kpfu.patients.backend.utils.HibernateConfigurer;
 import ru.kpfu.patients.view.controllers.*;
-import ru.kpfu.patients.view.models.Person;
 
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.Marshaller;
@@ -29,22 +31,19 @@ import javax.xml.bind.Unmarshaller;
 public class PatientsApplication extends Application {
 
     private Stage primaryStage;
+    private PatientService patientService;
     private BorderPane rootLayout;
 
-    private ObservableList<Person> personData = FXCollections.observableArrayList();
+    private ObservableList<Patient> personData = FXCollections.observableArrayList();
 
 
     public PatientsApplication() {
-        personData.add(new Person("Ахметзянова Луиза Рамилевна",""));
-        personData.add(new Person("Камалиева Алина Алмазовна", ""));
-        personData.add(new Person("Макарова Алина Ильдусовна", ""));
-        personData.add(new Person("Минапова Энже Фаргатовна", ""));
-        personData.add(new Person("Мишина Евгения Александровна", ""));
-        personData.add(new Person("Нуриева Ильнара Рауфовна", ""));
-        personData.add(new Person("Фролов Алексей Валерьевич", ""));
+        this.patientService = new PatientService();
+        List<Patient> pl = patientService.getPatientList();
+        this.personData.addAll(pl);
     }
 
-    public ObservableList<Person> getPersonData() {
+    public ObservableList<Patient> getPersonData() {
         return personData;
     }
 
@@ -111,7 +110,7 @@ public class PatientsApplication extends Application {
     }
     
 
-    public boolean showPersonEditDialog(Person person) {
+    public boolean showPersonEditDialog(Patient person) {
         try {
             FXMLLoader loader = new FXMLLoader();
             loader.setLocation(PatientsApplication.class.getResource("/PersonEditDialog.fxml"));
@@ -127,6 +126,7 @@ public class PatientsApplication extends Application {
             PersonEditDialogController controller = loader.getController();
             controller.setDialogStage(dialogStage);
             controller.setPerson(person);
+            controller.setMainApp(this);
             
             dialogStage.getIcons().add(new Image("file:src/resources/images/edit.png"));
 
@@ -233,6 +233,10 @@ public class PatientsApplication extends Application {
         	
         	alert.showAndWait();
         }
+    }
+
+    public PatientService getPatientService() {
+        return patientService;
     }
 
     public Stage getPrimaryStage() {

@@ -1,7 +1,7 @@
 package ru.kpfu.patients.backend.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "EEG")
@@ -13,8 +13,7 @@ public class EEGHistory {
     @JoinColumn(name = "id_patients")
     private Patient patient;
     @Column(columnDefinition = "numeric")
-    @Temporal(TemporalType.DATE)
-    private Date date;
+    private LocalDate date;
     @Column(name = "result")
     private String description;
 
@@ -34,11 +33,11 @@ public class EEGHistory {
         this.patient = patient;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

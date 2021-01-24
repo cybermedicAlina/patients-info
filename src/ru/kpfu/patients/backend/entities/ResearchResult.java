@@ -1,7 +1,7 @@
 package ru.kpfu.patients.backend.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 
 @Entity
 @Table(name = "results_of_instrumental_research")
@@ -10,7 +10,7 @@ public class ResearchResult {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Column(columnDefinition = "numeric")
-    private Date date;
+    private LocalDate date;
     private String result;
     @ManyToOne
     @JoinColumn(name = "id_patients")
@@ -24,11 +24,11 @@ public class ResearchResult {
         this.id = id;
     }
 
-    public Date getDate() {
+    public LocalDate getDate() {
         return date;
     }
 
-    public void setDate(Date date) {
+    public void setDate(LocalDate date) {
         this.date = date;
     }
 

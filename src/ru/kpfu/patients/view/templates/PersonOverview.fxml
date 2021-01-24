@@ -149,7 +149,7 @@
                                        GridPane.columnIndex="1" GridPane.rowIndex="16"/>
                                 <Label fx:id="developmentLabel" styleClass="label-bright" text="Label"
                                        GridPane.columnIndex="1" GridPane.rowIndex="17"/>
-                                <Label fx:id="speechLabel" styleClass="label-bright" text="Label"
+                                <Label fx:id="speechLabel" styleClass="label-bright"
                                        GridPane.columnIndex="1" GridPane.rowIndex="18"/>
                                 <Label fx:id="heredityLabel" styleClass="label-bright" text="Label"
                                        GridPane.columnIndex="1" GridPane.rowIndex="19"/>

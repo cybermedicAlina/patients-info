@@ -2,25 +2,25 @@ package ru.kpfu.patients.view.models;
 
 import java.time.LocalDate;
 
-import javafx.beans.property.IntegerProperty;
-import javafx.beans.property.ObjectProperty;
-import javafx.beans.property.SimpleIntegerProperty;
-import javafx.beans.property.SimpleObjectProperty;
-import javafx.beans.property.SimpleStringProperty;
-import javafx.beans.property.StringProperty;
+import javafx.beans.property.*;
 import ru.kpfu.patients.view.utils.LocalDateAdapter;
 
 import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
+import javax.xml.crypto.dsig.SignatureMethod;
 
 
 public class Person {
 
+    private final IntegerProperty id;
+    private final IntegerProperty age;
     private final StringProperty firstName;
     private final StringProperty gender;
     private final StringProperty street;
     private final IntegerProperty weight;
     private final IntegerProperty growth;
     private final ObjectProperty<LocalDate> birthday;
+    private final StringProperty ageOfOnset;
+    private final FloatProperty bodyMass;
     private final StringProperty diagnosis;
     private final StringProperty mutations;
     private final StringProperty complaints;
@@ -28,7 +28,7 @@ public class Person {
     private final StringProperty medHistory;
     private final StringProperty perinatalHistory;
     private final StringProperty birth;
-    private final StringProperty birthWeight;
+    private final FloatProperty birthWeight;
     private final StringProperty apgar;
     private final StringProperty development;
     private final StringProperty speech;
@@ -38,6 +38,8 @@ public class Person {
     private final StringProperty recommendations;
     private final StringProperty labDiagnostics;
     private final StringProperty instrumental;
+    private final StringProperty analyzes;
+    private final StringProperty caseHistory;
 
     public Person() {
         this(null, null);
@@ -45,7 +47,10 @@ public class Person {
 
 
     public Person(String firstName, String lastName) {
+        this.id = new SimpleIntegerProperty();
         this.firstName = new SimpleStringProperty(firstName);
+        this.age = new SimpleIntegerProperty();
+        this.ageOfOnset = new SimpleStringProperty();
         this.gender = new SimpleStringProperty();
         this.street = new SimpleStringProperty();
         this.weight = new SimpleIntegerProperty(0);
@@ -58,7 +63,7 @@ public class Person {
         this.medHistory = new SimpleStringProperty();
         this.perinatalHistory = new SimpleStringProperty();
         this.birth = new SimpleStringProperty();
-        this.birthWeight = new SimpleStringProperty();
+        this.birthWeight = new SimpleFloatProperty();
         this.apgar = new SimpleStringProperty();
         this.development = new SimpleStringProperty();
         this.speech = new SimpleStringProperty();
@@ -68,6 +73,9 @@ public class Person {
         this.recommendations = new SimpleStringProperty();
         this.labDiagnostics = new SimpleStringProperty();
         this.instrumental = new SimpleStringProperty();
+        this.analyzes = new SimpleStringProperty();
+        this.bodyMass = new SimpleFloatProperty();
+        this.caseHistory = new SimpleStringProperty();
     }
 
     public String getDiagnosis() {
@@ -154,15 +162,11 @@ public class Person {
         this.birth.set(birth);
     }
 
-    public String getBirthWeight() {
+    public Float getBirthWeight() {
         return birthWeight.get();
     }
 
-    public StringProperty birthWeightProperty() {
-        return birthWeight;
-    }
-
-    public void setBirthWeight(String birthWeight) {
+    public void setBirthWeight(Float birthWeight) {
         this.birthWeight.set(birthWeight);
     }
 
@@ -345,5 +349,49 @@ public class Person {
 
     public ObjectProperty<LocalDate> birthdayProperty() {
         return birthday;
+    }
+
+    public void setId(int id) { this.id.set(id); }
+
+    public int getId() { return this.id.get(); }
+
+    public void setAge(int id) {
+        this.age.set(id);
+    }
+
+    public int getAge() {
+        return this.age.get();
+    }
+
+    public void setAgeOfOnset(String age) {
+        this.ageOfOnset.set(age);
+    }
+
+    public String getAgeOfOnset() {
+        return ageOfOnset.get();
+    }
+
+    public String getAnalyzes() {
+        return analyzes.get();
+    }
+
+    public void setAnalyzes(String analyzes) {
+        this.analyzes.set(analyzes);
+    }
+
+    public float getBodyMass() {
+        return bodyMass.get();
+    }
+
+    public void setBodyMass(float bodyMass) {
+        this.bodyMass.set(bodyMass);
+    }
+
+    public String getCaseHistory() {
+        return caseHistory.get();
+    }
+
+    public void setCaseHistory(String caseHistory) {
+        this.caseHistory.set(caseHistory);
     }
 }

@@ -1,6 +1,7 @@
 package ru.kpfu.patients.view.controllers;
 
 import java.text.DateFormatSymbols;
+import java.time.ZoneId;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
@@ -11,7 +12,7 @@ import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.CategoryAxis;
 import javafx.scene.chart.XYChart;
-import ru.kpfu.patients.view.models.Person;
+import ru.kpfu.patients.backend.entities.Patient;
 
 public class BirthdayStatisticsController {
 
@@ -31,10 +32,10 @@ public class BirthdayStatisticsController {
         xAxis.setCategories(monthNames);
     }
 
-    public void setPersonData(List<Person> persons) {
+    public void setPersonData(List<Patient> persons) {
         int[] monthCounter = new int[12];
-        for (Person p : persons) {
-            int month = p.getBirthday().getMonthValue() - 1;
+        for (Patient p : persons) {
+            int month = p.getDateOfBirth().getMonthValue() + 1;
             monthCounter[month]++;
         }
 

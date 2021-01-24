@@ -1,5 +1,8 @@
 package ru.kpfu.patients.view.controllers;
 
+import javafx.beans.property.SimpleSetProperty;
+import javafx.beans.property.SimpleStringProperty;
+import javafx.collections.FXCollections;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -7,15 +10,15 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import ru.kpfu.patients.PatientsApplication;
-import ru.kpfu.patients.view.models.Person;
+import ru.kpfu.patients.backend.entities.Patient;
 import ru.kpfu.patients.view.utils.DateUtil;
 
 
 public class PersonOverviewController {
     @FXML
-    private TableView<Person> personTable;
+    private TableView<Patient> personTable;
     @FXML
-    private TableColumn<Person, String> firstNameColumn;
+    private TableColumn<Patient, String> firstNameColumn;
   
     @FXML
     private Label firstNameLabel;
@@ -73,7 +76,7 @@ public class PersonOverviewController {
 
     @FXML
     private void initialize() {
-        firstNameColumn.setCellValueFactory(cellData -> cellData.getValue().firstNameProperty());
+        firstNameColumn.setCellValueFactory(cellData -> new SimpleStringProperty(cellData.getValue().getName()));
         
         showPersonDetails(null);
 
@@ -86,30 +89,30 @@ public class PersonOverviewController {
         personTable.setItems(mainApp.getPersonData());
     }
 
-    private void showPersonDetails(Person person) {
+    private void showPersonDetails(Patient person) {
         if (person != null) {
-            firstNameLabel.setText(person.getFirstName());
-            genderLabel.setText(person.getGender());
-            streetLabel.setText(person.getStreet());
-            growthLabel.setText(Integer.toString(person.getGrowth()));
-            birthdayLabel.setText(DateUtil.format(person.getBirthday()));
-            weightLabel.setText(Integer.toString(person.getWeight()));
-            diagnosisLabel.setText(person.getDiagnosis());
-            mutationsLabel.setText(person.getMutations());
+            firstNameLabel.setText(person.getName() );
+            genderLabel.setText(person.getGender().toString());
+            streetLabel.setText(person.getAddress());
+            growthLabel.setText(Integer.toString(person.getAge()));
+            birthdayLabel.setText(DateUtil.format(person.getDateOfBirth()));
+            weightLabel.setText(person.getBodyMass() == null ? "" : person.getBodyMass().toString());
+            diagnosisLabel.setText(person.getDiagnosis().getName());
+            mutationsLabel.setText(person.getPathogenMutation());
             complaintsLabel.setText(person.getComplaints());
-            treatmentLabel.setText(person.getTreatment());
-            medHistoryLabel.setText(person.getMedHistory());
+//            treatmentLabel.setText(person.getTreatment());
+            medHistoryLabel.setText(person.getCaseHistory());
             perinatalHistoryLabel.setText(person.getPerinatalHistory());
-            birthLabel.setText(person.getBirth());
-            birthWeightLabel.setText(person.getBirthWeight());
-            apgarLabel.setText(person.getApgar());
-            developmentLabel.setText(person.getDevelopment());
+            birthLabel.setText(person.getBirthInfo());
+            birthWeightLabel.setText(person.getBirthWeight() == null ? "": person.getBirthWeight().toString());
+            apgarLabel.setText(person.getAPGAR());
+            developmentLabel.setText(person.getDevelopmentFormula());
             heredityLabel.setText(person.getHeredity());
-            neurostatusLabel.setText(person.getNeurostatus());
+            neurostatusLabel.setText(person.getNeurologicalStatus());
             conclusionLabel.setText(person.getConclusion());
             recommendationsLabel.setText(person.getRecommendations());
-            labDiagnosticsLabel.setText(person.getLabDiagnostics());
-            instrumentalLabel.setText(person.getInstrumental());
+//            labDiagnosticsLabel.setText(person.getLabDiagnostics());
+//            instrumentalLabel.setText(person.getInstrumental());
         } else {
             firstNameLabel.setText("");
             genderLabel.setText("");
@@ -139,7 +142,8 @@ public class PersonOverviewController {
     @FXML
     private void handleDeletePerson() {
         int selectedIndex = personTable.getSelectionModel().getSelectedIndex();
-        if (selectedIndex >= 0) {
+        Patient patient = personTable.getSelectionModel().getSelectedItem();
+        if (selectedIndex >= 0 && this.mainApp.getPatientService().deletePatient(patient.getId())) {
             personTable.getItems().remove(selectedIndex);
         } else {
             Alert alert = new Alert(AlertType.WARNING);
@@ -153,7 +157,7 @@ public class PersonOverviewController {
 
     @FXML
     private void handleEditPerson() {
-        Person selectedPerson = personTable.getSelectionModel().getSelectedItem();
+        Patient selectedPerson = personTable.getSelectionModel().getSelectedItem();
         if (selectedPerson != null) {
             boolean okClicked = mainApp.showPersonEditDialog(selectedPerson);
             if (okClicked) {

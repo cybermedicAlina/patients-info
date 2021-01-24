@@ -1,7 +1,7 @@
 package ru.kpfu.patients.backend.entities;
 
 import javax.persistence.*;
-import java.util.Date;
+import java.time.LocalDate;
 import java.util.List;
 
 @Entity
@@ -21,10 +21,10 @@ public class Patient {
     private String ageOfOnset;
     private String address;
     @Column(name = "date_of_examination", columnDefinition = "numeric")
-    private Date dateOfExamination;
+    private LocalDate dateOfExamination;
     private Integer age;
     @Column(name = "date_of_birth", columnDefinition = "numeric")
-    private Date dateOfBirth;
+    private LocalDate dateOfBirth;
     private String pathogenMutation;
     private String complaints;
     @Column(name = "test_results")
@@ -125,19 +125,19 @@ public class Patient {
         this.address = address;
     }
 
-    public Date getDateOfExamination() {
+    public LocalDate getDateOfExamination() {
         return dateOfExamination;
     }
 
-    public void setDateOfExamination(Date dateOfExamination) {
+    public void setDateOfExamination(LocalDate dateOfExamination) {
         this.dateOfExamination = dateOfExamination;
     }
 
-    public Date getDateOfBirth() {
+    public LocalDate getDateOfBirth() {
         return dateOfBirth;
     }
 
-    public void setDateOfBirth(Date dateOfBirth) {
+    public void setDateOfBirth(LocalDate dateOfBirth) {
         this.dateOfBirth = dateOfBirth;
     }
 

@@ -1,5 +1,6 @@
 package ru.kpfu.patients.view.controllers;
 
+import javafx.beans.property.StringProperty;
 import javafx.fxml.FXML;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -7,7 +8,9 @@ import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import ru.kpfu.patients.view.models.Person;
+import ru.kpfu.patients.PatientsApplication;
+import ru.kpfu.patients.backend.entities.Gender;
+import ru.kpfu.patients.backend.entities.Patient;
 
 public class PersonEditDialogController {
     @FXML
@@ -59,8 +62,9 @@ public class PersonEditDialogController {
 
 
     private Stage dialogStage;
-    private Person person;
+    private Patient person;
     private boolean okClicked = false;
+    private PatientsApplication mainApp;
 
     @FXML
     private void initialize() {
@@ -72,34 +76,58 @@ public class PersonEditDialogController {
         this.dialogStage.getIcons().add(new Image("file:src/resources/images/edit.png"));
     }
 
-    public void setPerson(Person person) {
+    public void setPerson(Patient person) {
         this.person = person;
-
-        firstNameField.setText(person.getFirstName());
-        genderField.setText(person.getGender());
-        streetField.setText(person.getStreet());
-        growthField.setText(Integer.toString(person.getGrowth()));
-        weightField.setText(Integer.toString(person.getWeight()));
-        birthdayDatePicker.setValue(person.getBirthday());
-        birthdayDatePicker.setPromptText("dd.mm.yyyy");
-        diagnosisField.setText(person.getDiagnosis());
-        mutationsField.setText(person.getMutations());
-        complaintsField.setText(person.getComplaints());
-        treatmentField.setText(person.getTreatment());
-        medHistoryField.setText(person.getMedHistory());
-        perinatalHistoryField.setText(person.getPerinatalHistory());
-        birthField.setText(person.getBirth());
-        birthWeightField.setText(person.getBirthWeight());
-        apgarField.setText(person.getApgar());
-        developmentField.setText(person.getDevelopment());
-        speechField.setText(person.getSpeech());
-        heredityField.setText(person.getHeredity());
-        neurostatusField.setText(person.getNeurostatus());
-        conclusionField.setText(person.getConclusion());
-        recommendationsField.setText(person.getRecommendations());
-        labDiagnosticsField.setText(person.getLabDiagnostics());
-        instrumentalField.setText(person.getInstrumental());
-
+        if (person != null) {
+            firstNameField.setText(person.getName());
+            genderField.setText(person.getGender().toString());
+            streetField.setText(person.getAddress());
+            growthField.setText(Integer.toString(person.getAge()));
+            weightField.setText(person.getBodyMass() == null ? "" : person.getBodyMass().toString());
+            birthdayDatePicker.setValue(person.getDateOfBirth());
+            birthdayDatePicker.setPromptText("dd.mm.yyyy");
+            diagnosisField.setText(person.getDiagnosis().getName());
+            mutationsField.setText(person.getPathogenMutation());
+            complaintsField.setText(person.getComplaints());
+            speechField.setId(person.getSpeech());
+//        treatmentField.setText(person.getTreatment());
+            medHistoryField.setText(person.getCaseHistory());
+            perinatalHistoryField.setText(person.getPerinatalHistory());
+            birthField.setText(person.getBirthInfo());
+            birthWeightField.setText(person.getBirthWeight() == null ? "" : person.getBirthWeight().toString());
+            apgarField.setText(person.getAPGAR());
+            developmentField.setText(person.getDevelopmentFormula());
+            speechField.setText(person.getSpeech());
+            heredityField.setText(person.getHeredity());
+            neurostatusField.setText(person.getNeurologicalStatus());
+            conclusionField.setText(person.getConclusion());
+            recommendationsField.setText(person.getRecommendations());
+//        labDiagnosticsField.setText(person.getLabDiagnostics());
+//        instrumentalField.setText(person.getInstrumental());
+        }  else {
+            firstNameField.setText("");
+            genderField.setText("");
+            streetField.setText("");
+            growthField.setText("");
+            weightField.setText("");
+            diagnosisField.setText("");
+            mutationsField.setText("");
+            complaintsField.setText("");
+            treatmentField.setText("");
+            medHistoryField.setText("");
+            perinatalHistoryField.setText("");
+            speechField.setText("");
+            birthField.setText("");
+            birthWeightField.setText("");
+            apgarField.setText("");
+            developmentField.setText("");
+            heredityField.setText("");
+            neurostatusField.setText("");
+            conclusionField.setText("");
+            recommendationsField.setText("");
+            labDiagnosticsField.setText("");
+            instrumentalField.setText("");
+        }
     }
 
     public boolean isOkClicked() {
@@ -109,30 +137,40 @@ public class PersonEditDialogController {
     @FXML
     private void handleOk() {
         if (isInputValid()) {
-            person.setFirstName(firstNameField.getText());
-            person.setGender(genderField.getText());
-            person.setStreet(streetField.getText());
-            person.setGrowth(Integer.parseInt(growthField.getText()));
-            person.setWeight(Integer.parseInt(weightField.getText()));
-            person.setBirthday(birthdayDatePicker.getValue());
-            person.setDiagnosis(diagnosisField.getText());
-            person.setMutations(mutationsField.getText());
+            if (this.person == null) {
+                this.person = new Patient();
+            }
+            person.setName(firstNameField.getText());
+            person.setGender(Gender.valueOf(genderField.getText()));
+            person.setAddress(streetField.getText());
+            person.setAge(Integer.parseInt(growthField.getText()));
+            person.setBodyMass(Float.parseFloat(weightField.getText()));
+            person.setDateOfBirth(birthdayDatePicker.getValue());
+//            person.setDiagnosis(diagnosisField.getText());
+            person.setPathogenMutation(mutationsField.getText());
             person.setComplaints(complaintsField.getText());
-            person.setTreatment(treatmentField.getText());
-            person.setMedHistory(medHistoryField.getText());
+//            person.setTreatment(treatmentField.getText());
+            person.setCaseHistory(medHistoryField.getText());
             person.setPerinatalHistory(perinatalHistoryField.getText());
-            person.setBirth(birthField.getText());
-            person.setBirthWeight(birthWeightField.getText());
-            person.setApgar(apgarField.getText());
-            person.setDevelopment(developmentField.getText());
+            person.setBirthInfo(birthField.getText());
+            String bwField = birthWeightField.getText();
+            person.setBirthWeight(!bwField.equals("") ? Float.parseFloat(bwField): 0);
+            person.setAPGAR(apgarField.getText());
+            person.setDevelopmentFormula(developmentField.getText());
             person.setSpeech(speechField.getText());
             person.setHeredity(heredityField.getText());
-            person.setNeurostatus(neurostatusField.getText());
+            person.setNeurologicalStatus(neurostatusField.getText());
+            person.setSpeech(speechField.getText());
             person.setConclusion(conclusionField.getText());
             person.setRecommendations(recommendationsField.getText());
-            person.setLabDiagnostics(labDiagnosticsField.getText());
-            person.setInstrumental(instrumentalField.getText());
+//            person.setLabDiagnostics(labDiagnosticsField.getText());
+//            person.setInstrumental(instrumentalField.getText());
 
+            if (person.getId() == null) {
+                this.mainApp.getPatientService().addPatient(person);
+                this.mainApp.getPersonData().add(person);
+            } else
+                this.mainApp.getPatientService().updatePatient(person);
             okClicked = true;
             dialogStage.close();
         }
@@ -182,5 +220,13 @@ public class PersonEditDialogController {
             
             return false;
         }
+    }
+
+    public PatientsApplication getMainApp() {
+        return mainApp;
+    }
+
+    public void setMainApp(PatientsApplication mainApp) {
+        this.mainApp = mainApp;
     }
 }

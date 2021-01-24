@@ -29,6 +29,10 @@ public class Diagnosis {
         this(null, name);
     }
 
+    public Diagnosis(int id) {
+        this(id, "");
+    }
+
     public Diagnosis(Integer id, String name) {
         this.id = id;
         this.name = name;
