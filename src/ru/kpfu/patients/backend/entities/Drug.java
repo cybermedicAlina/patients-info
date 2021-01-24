@@ -11,7 +11,7 @@ public class Drug {
     private Integer id;
     @Column(name = "drug_name")
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "drug")
     private List<DrugPatients> drugPatients;
 
     public Integer getId() {

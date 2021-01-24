@@ -11,11 +11,14 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.BorderPane;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
+import org.hibernate.SessionFactory;
+import ru.kpfu.patients.backend.utils.HibernateConfigurer;
 import ru.kpfu.patients.view.controllers.*;
 import ru.kpfu.patients.view.models.Person;
 
@@ -55,9 +58,16 @@ public class PatientsApplication extends Application {
         
         this.primaryStage.getIcons().add(new Image("file:src/resources/images/address_book_32.png"));
 
-        initRootLayout();
-
-        showPersonOverview();
+        try {
+            HibernateConfigurer.getSessionFactory();
+            initRootLayout();
+            showPersonOverview();
+        } catch (Exception e) {
+            Label label = new Label("Не удалось подключиться к базе данных \n" + e.toString());
+            e.printStackTrace();
+            this.primaryStage.setScene(new Scene(label, 640, 480));
+            this.primaryStage.show();
+        }
     }
 
     public void initRootLayout() {

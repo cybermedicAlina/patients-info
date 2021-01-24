@@ -20,10 +20,10 @@ public class Patient {
     @Column(name = "age_of_onset")
     private String ageOfOnset;
     private String address;
-    @Column(name = "date_of_examination")
+    @Column(name = "date_of_examination", columnDefinition = "numeric")
     private Date dateOfExamination;
     private Integer age;
-    @Column(name = "date_of_birth")
+    @Column(name = "date_of_birth", columnDefinition = "numeric")
     private Date dateOfBirth;
     private String pathogenMutation;
     private String complaints;
@@ -50,11 +50,11 @@ public class Patient {
     private String conclusion;
     private String recommendations;
     private String analyzes;
-    @OneToMany
+    @OneToMany(mappedBy = "patient")
     private List<EEGHistory> eegHistories;
-    @OneToMany
+    @OneToMany(mappedBy = "patient")
     private List<ResearchResult> diagnosticsHistories;
-    @OneToMany
+    @OneToMany(mappedBy = "patient")
     private List<DrugPatients> drugPatients;
 
     public Patient() {

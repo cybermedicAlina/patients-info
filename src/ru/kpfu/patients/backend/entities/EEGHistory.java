@@ -10,9 +10,12 @@ public class EEGHistory {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @ManyToOne
-    @Column(name = "id_patients")
+    @JoinColumn(name = "id_patients")
     private Patient patient;
+    @Column(columnDefinition = "numeric")
+    @Temporal(TemporalType.DATE)
     private Date date;
+    @Column(name = "result")
     private String description;
 
     public Integer getId() {

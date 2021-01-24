@@ -18,7 +18,8 @@ create table patients
         primary key autoincrement,
     name TEXT,
     gender TEXT,
-    diagnosis TEXT,
+    diagnosis_id INTEGER not null
+        references diagnosis,
     type_of_epileptic_seizure TEXT,
     age_of_onset TEXT,
     address TEXT,
@@ -31,7 +32,7 @@ create table patients
     case_history TEXT,
     perinatal_history TEXT,
     childbirth TEXT,
-    birth_weight TEXT,
+    birth_weight FLOAT,
     APGAR TEXT,
     development_formula TEXT,
     speech TEXT,
@@ -40,7 +41,8 @@ create table patients
     body_mass FLOAT,
     doctors_conclusion TEXT,
     recommendations TEXT,
-    analyzes TEXT
+    analyzes TEXT,
+    pathogenMutation Text
 );
 
 create table EEG

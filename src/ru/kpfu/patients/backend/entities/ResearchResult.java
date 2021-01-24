@@ -9,10 +9,11 @@ public class ResearchResult {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+    @Column(columnDefinition = "numeric")
     private Date date;
     private String result;
     @ManyToOne
-    @Column(name = "id_patients")
+    @JoinColumn(name = "id_patients")
     private Patient patient;
 
     public Integer getId() {

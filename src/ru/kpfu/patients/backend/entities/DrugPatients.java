@@ -14,10 +14,10 @@ public class DrugPatients {
     @Column(name = "treatment_effect")
     private String treatmentEffect;
     @ManyToOne
-    @Column(name = "id_patients")
+    @JoinColumn(name = "id_patients")
     private Patient patient;
     @ManyToOne
-    @Column(name = "id_drug")
+    @JoinColumn(name = "id_drug")
     private Drug drug;
 
     public Integer getId() {

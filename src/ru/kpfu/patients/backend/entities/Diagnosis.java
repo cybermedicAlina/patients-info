@@ -10,7 +10,7 @@ public class Diagnosis {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @OneToMany
+    @OneToMany(mappedBy = "diagnosis")
     private List<Patient> patients;
 
     public Diagnosis() {
