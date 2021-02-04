@@ -11,8 +11,7 @@ public class Patient {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
+    private String gender;
     @ManyToOne
     private Diagnosis diagnosis;
     @Column(name = "type_of_epileptic_seizure")
@@ -94,11 +93,11 @@ public class Patient {
         this.name = name;
     }
 
-    public Gender getGender() {
+    public String getGender() {
         return gender;
     }
 
-    public void setGender(Gender gender) {
+    public void setGender(String gender) {
         this.gender = gender;
     }
 

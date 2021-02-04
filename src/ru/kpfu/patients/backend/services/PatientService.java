@@ -29,7 +29,7 @@ public class PatientService extends Service {
         if (patient1 == null) {
             return false;
         }
-        session.save(patient);
+        session.merge(patient);
         session.getTransaction().commit();
         session.close();
         return true;

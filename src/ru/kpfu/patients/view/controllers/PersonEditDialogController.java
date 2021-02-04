@@ -80,7 +80,7 @@ public class PersonEditDialogController {
         this.person = person;
         if (person != null) {
             firstNameField.setText(person.getName());
-            genderField.setText(person.getGender().toString());
+            genderField.setText(person.getGender());
             streetField.setText(person.getAddress());
             growthField.setText(Integer.toString(person.getAge()));
             weightField.setText(person.getBodyMass() == null ? "" : person.getBodyMass().toString());
@@ -141,7 +141,7 @@ public class PersonEditDialogController {
                 this.person = new Patient();
             }
             person.setName(firstNameField.getText());
-            person.setGender(Gender.valueOf(genderField.getText()));
+            person.setGender(genderField.getText());
             person.setAddress(streetField.getText());
             person.setAge(Integer.parseInt(growthField.getText()));
             person.setBodyMass(Float.parseFloat(weightField.getText()));

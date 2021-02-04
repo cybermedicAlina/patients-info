@@ -92,7 +92,7 @@ public class PersonOverviewController {
     private void showPersonDetails(Patient person) {
         if (person != null) {
             firstNameLabel.setText(person.getName() );
-            genderLabel.setText(person.getGender().toString());
+            genderLabel.setText(person.getGender());
             streetLabel.setText(person.getAddress());
             growthLabel.setText(Integer.toString(person.getAge()));
             birthdayLabel.setText(DateUtil.format(person.getDateOfBirth()));
